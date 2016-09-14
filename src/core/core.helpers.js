@@ -981,11 +981,11 @@ module.exports = function(Chart) {
 		// Insert the iframe so that contentWindow is available
 		node.insertBefore(hiddenIframe, node.firstChild);
 
-		(hiddenIframe.contentWindow || hiddenIframe).onresize = function() {
+		(hiddenIframe.contentWindow || hiddenIframe).addEventListener('resize', function() {
 			if (callback) {
 				return callback();
 			}
-		};
+		});
 	};
 	helpers.removeResizeListener = function(node) {
 		var hiddenIframe = node.querySelector('.chartjs-hidden-iframe');
